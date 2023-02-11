@@ -18,6 +18,7 @@ worker.postMessage('Worker, are you listening?');
 /**
  * None of these will execute.
  * When we use once, just the first message will be executed.
+ * You can let worker listening all, if you use ```parentPort.on``` 
  */
 
 setTimeout(() => {
