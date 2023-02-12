@@ -1,4 +1,4 @@
-const { parentPort } = require('node:worker_threads');
+import { parentPort } from 'node:worker_threads';
 
 console.log('\n----------------- Worker -------------------------')
 

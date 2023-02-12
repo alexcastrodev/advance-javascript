@@ -1,5 +1,5 @@
-const { Worker } = require('node:worker_threads');
-const { execSync } = require('child_process')
+import { Worker } from 'node:worker_threads'
+import { execSync } from 'child_process'
 
 function getCurrentThreadCount() {
     return parseInt(execSync(`ps -M ${process.pid} | wc -l`))
@@ -13,7 +13,7 @@ console.log('PID: ' + process.pid)
 console.log('----------------- END INFO -------------------------\n\n')
 
 console.log('----------------- Main Thread -------------------------')
-const worker = new Worker('./worker.js');
+const worker = new Worker('./worker.mjs');
 
 console.log('\n I will call the worker')
 
