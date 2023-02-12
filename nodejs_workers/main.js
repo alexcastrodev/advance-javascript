@@ -1,5 +1,16 @@
 const { Worker } = require('node:worker_threads');
+const { execSync } = require('child_process')
 
+function getCurrentThreadCount() {
+    return parseInt(execSync(`ps -M ${process.pid} | wc -l`))
+}
+
+
+console.log('----------------- START INFO -------------------------')
+console.log('Number of thread setted: ' + process.env.UV_THREADPOOL_SIZE)
+console.log('Number of thread: ' + getCurrentThreadCount())
+console.log('PID: ' + process.pid)
+console.log('----------------- END INFO -------------------------\n\n')
 
 console.log('----------------- Main Thread -------------------------')
 const worker = new Worker('./worker.js');
