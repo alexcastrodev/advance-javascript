@@ -1,10 +1,12 @@
 import { Worker } from 'node:worker_threads'
 import { execSync } from 'child_process'
+import state, { queue } from './state.mjs'
 
 function getCurrentThreadCount() {
     return parseInt(execSync(`ps -M ${process.pid} | wc -l`))
 }
 
+state[queue].push(1)
 
 console.log('----------------- START INFO -------------------------')
 console.log('Number of thread setted: ' + process.env.UV_THREADPOOL_SIZE)
@@ -44,4 +46,5 @@ setTimeout(() => {
 // This will be executed if we comment line 16
 setImmediate(() => {
     worker.postMessage('Worker, are you really listening?');
+    console.log('\ Main Thread: Queue: \n' + state[queue])
 })
