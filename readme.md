@@ -20,8 +20,6 @@ So if you're ready to dive into the world of NodeJS and JavaScript runtimes, let
 
 If you like my introduction, it was not me, but ChatGPT :P
 
-
-
 ### Another Extra
 
 You can also limit number of thread:
