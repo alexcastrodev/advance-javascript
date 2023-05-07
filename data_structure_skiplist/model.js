@@ -1,24 +1,76 @@
-{ // This is the represent of Skitlist
-    head: {
-        level: 2 // It represent the point to L1
-    }
-    nodes: [
-        { // This maybe is the represent of L0
-            value: 1,
-            foward: {
-                value: 2,
-                foward: {
-                    value: 3,
-                    foward: null
+{
+    "head": {
+      "value": -1,
+      "forward": [
+        {
+          "value": 1,
+          "forward": [
+            {
+              "value": 2,
+              "forward": [
+                {
+                  "value": 3,
+                  "forward": [
+                    {
+                      "value": 4,
+                      "forward": [
+                        {
+                          "value": 5,
+                          "forward": [
+                            null,
+                            null
+                          ]
+                        }
+                      ]
+                    }
+                  ]
                 }
+              ]
+            },
+            {
+              "value": 5,
+              "forward": [
+                null,
+                null
+              ]
             }
+          ]
         },
-        { // This maybe is the represent of L1
-            value: 1,
-            foward: {
-                value: 2,
-                foward: null
+        {
+          "value": 1,
+          "forward": [
+            {
+              "value": 2,
+              "forward": [
+                {
+                  "value": 3,
+                  "forward": [
+                    {
+                      "value": 4,
+                      "forward": [
+                        {
+                          "value": 5,
+                          "forward": [
+                            null,
+                            null
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "value": 5,
+              "forward": [
+                null,
+                null
+              ]
             }
-        },
-    ]   
-}
+          ]
+        }
+      ]
+    },
+    "level": 1
+  }
