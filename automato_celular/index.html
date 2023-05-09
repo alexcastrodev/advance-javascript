@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <canvas id="canvas" width="500" height="500"></canvas>
+</body>
+<script>
+function cellularAutomaton(rule, width, height) {
+  // Define uma matriz para representar o estado atual do autômato celular.
+  let currentState = new Array(width).fill(0);
+  currentState[Math.floor(width / 2)] = 1; // Define o estado inicial.
+
+  // Define uma matriz para representar o próximo estado do autômato celular.
+  let nextState = new Array(width).fill(0);
+
+  // Define uma função para atualizar o estado do autômato celular.
+  function update() {
+    for (let i = 1; i < width - 1; i++) {
+      let left = currentState[i - 1];
+      let center = currentState[i];
+      let right = currentState[i + 1];
+      nextState[i] = rule(left, center, right);
+    }
+    let temp = currentState;
+    currentState = nextState;
+    nextState = temp;
+  }
+
+  // Define uma função para desenhar o estado atual do autômato celular na tela.
+  function draw() {
+    let canvas = document.getElementById("canvas");
+    let context = canvas.getContext("2d");
+    let cellWidth = canvas.width / width;
+    let cellHeight = canvas.height / height;
+    for (let i = 0; i < width; i++) {
+      context.fillStyle = currentState[i] == 1 ? "black" : "white";
+      context.fillRect(i * cellWidth, 0, cellWidth, cellHeight);
+    }
+  }
+
+  // Define a função principal para executar o autômato celular.
+  function run() {
+    update();
+    draw();
+    requestAnimationFrame(run);
+  }
+
+  return { run };
+}
+
+// Exemplo de uso da função cellularAutomaton com uma regra simples.
+let rule30 = (left, center, right) => (left ^ (center | right));
+let automaton = cellularAutomaton(rule30, 200, 1);
+automaton.run();
+</script>
+</html>
