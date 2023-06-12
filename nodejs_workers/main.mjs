@@ -48,3 +48,4 @@ setImmediate(() => {
     worker.postMessage('Worker, are you really listening?');
     console.log('\ Main Thread: Queue: \n' + state[queue])
 })
+
