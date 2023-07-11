@@ -19,7 +19,6 @@ function formatBytes(bytes) {
 
 let i = 0
 while(i < 200000) {
-    console.log(os.freemem())
     readBytes()
     i++
 }
